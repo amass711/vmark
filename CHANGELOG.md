@@ -24,6 +24,14 @@ section as part of the version bump (`.claude/rules/40-version-bump.md`).
   the floating row, jumps back to the prompt. Thanks to @ijerrywong for the
   idea and the implementation (#1545).
 
+### Security
+
+- Genie, workflow and GitHub Action YAML files are now read by a parser
+  written in safe Rust. The previous one was built on an unmaintained
+  machine translation of C code (RUSTSEC-2024-0449). Files that parsed before
+  parse the same way: only `true` and `false` count as booleans, and a
+  duplicate key is still an error.
+
 ## [0.9.97] - 2026-10-10
 
 ### Fixed
