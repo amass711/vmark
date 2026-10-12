@@ -1,8 +1,7 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "automation-bridge",
-  "description": "[capability-version: 0.9.93] The debug-only Tauri MCP automation bridge (tauri-plugin-mcp-bridge, registered in src-tauri/src/app_plugins.rs). Split from default.json because the plugin is not a dependency on Windows: its WebView2 screenshot code is built against webview2-com 0.38 while tauri 2.12 uses 0.39, so it does not compile there (see its entry in Cargo.toml). tauri-build refuses a capability naming a permission no compiled plugin defines, so the grant is scoped to the platforms that carry the plugin. Add windows back when the plugin moves back to [dependencies].",
+  "description": "[capability-version: 0.9.98] The debug-only Tauri MCP automation bridge (tauri-plugin-mcp-bridge, registered in src-tauri/src/app_plugins.rs). Kept apart from default.json because it is a dev driver surface, not a product permission. Every platform carries the plugin again since 0.13.1, the first release built on the webview2-com 0.39 / windows 0.62 that tauri 2.12 uses (see its entry in Cargo.toml).",
   "windows": ["main", "doc-*"],
-  "platforms": ["macOS", "linux"],
   "permissions": ["mcp-bridge:default"]
 }

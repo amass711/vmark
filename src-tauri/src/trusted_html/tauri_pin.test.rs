@@ -43,6 +43,18 @@ use std::path::Path;
 
 /// The tauri version the boundary above was measured against.
 ///
+/// 2.12.2 (re-verified with the procedure above, `pnpm tauri:dev`, macOS,
+/// wry 0.57.0): the frame was `sandbox="allow-scripts"` on
+/// `vmark-trusted://doc/…`; its keyless `window_close_log` post was rejected
+/// (`missing field __TAURI_INVOKE_KEY__`) and its marker never reached the
+/// log, while the same command invoked WITH the key from the main window did
+/// log; from the frame, `window.parent.document` threw SecurityError and
+/// `__TAURI_INTERNALS__`, `__TAURI_INVOKE_KEY__` and `__TAURI__` were all
+/// undefined. Between 2.12.1 and 2.12.2, `manager/webview.rs`,
+/// `webview/mod.rs`, `ipc/protocol.rs`, `scripts/ipc.js` and
+/// `scripts/ipc-protocol.js` are byte-identical; the release touched only
+/// event listeners, menus, `process.rs` and the global API bundle.
+///
 /// 2.12.1 (re-verified with the procedure above, `pnpm tauri:dev`, macOS,
 /// wry 0.57.0): the frame was `sandbox="allow-scripts"` on `vmark-trusted://`;
 /// its keyless `window_close_log` post was rejected (`missing field
@@ -54,7 +66,7 @@ use std::path::Path;
 /// `Webview::on_message` and the `for_main_frame_only: true` bootstrap
 /// injection in `manager/webview.rs` unchanged; `scripts/ipc-protocol.js` is
 /// byte-identical.
-const VERIFIED_TAURI: &str = "2.12.1";
+const VERIFIED_TAURI: &str = "2.12.2";
 
 /// Read the resolved `tauri` version out of the lockfile.
 fn locked_tauri_version() -> String {
