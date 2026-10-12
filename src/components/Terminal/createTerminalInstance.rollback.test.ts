@@ -27,6 +27,7 @@ vi.mock("@xterm/xterm", () => ({
     // Floating-prompt subscriptions (setupFloatingPrompt).
     onScroll = vi.fn(() => ({ dispose: vi.fn() }));
     onWriteParsed = vi.fn(() => ({ dispose: vi.fn() }));
+    onData = vi.fn(() => ({ dispose: vi.fn() }));
     onCursorMove = vi.fn(() => ({ dispose: vi.fn() }));
     onResize = vi.fn(() => ({ dispose: vi.fn() }));
     scrollToBottom = vi.fn();

@@ -13,6 +13,11 @@
  *     gate are untouched — the overlay never owns text input.
  *   - mousedown on the overlay is preventDefaulted so clicking it never steals
  *     focus from the terminal; its button jumps the viewport to the bottom.
+ *   - Submitting jumps too: a keystroke that is exactly Enter (`\r`, or
+ *     `\r\n` in linefeed mode) or Ctrl+C (`\x03`) scrolls to the bottom, so the
+ *     result of the command — or of the prompt sent to a TUI — is in view.
+ *     Exact match on purpose: Shift+Enter (CSI-u newline inside a TUI's
+ *     input box), pastes and every other key keep the viewport still.
  *   - Which rows: floatingPromptRange.ts. How they look: floatingPromptCells.ts
  *     (data only — rows are built with textContent, never innerHTML).
  *   - Cursor visibility (DECTCEM, `CSI ? 25 h/l`) is observed with parser hooks
@@ -43,6 +48,9 @@ interface SetupOptions {
 }
 
 const SVG_NS = "http://www.w3.org/2000/svg";
+
+/** onData payloads that submit input or interrupt, and so return to the prompt. */
+const SUBMIT_KEYS: ReadonlySet<string> = new Set(["\r", "\r\n", "\x03"]);
 
 /** Lucide's arrow-down-to-line, built as DOM so no markup string is parsed. */
 function jumpIcon(): SVGSVGElement {
@@ -162,6 +170,9 @@ export function setupFloatingPrompt({ term, container, schedule }: SetupOptions)
   container.addEventListener("wheel", requestRender, { passive: true });
 
   const subscriptions = [
+    term.onData((data) => {
+      if (SUBMIT_KEYS.has(data)) onJump();
+    }),
     term.onScroll(requestRender),
     term.onWriteParsed(requestRender),
     term.onCursorMove(requestRender),

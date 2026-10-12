@@ -74,7 +74,7 @@ La navigazione tra i prompt (`Mod + ↑` / `Mod + ↓`) richiede l'integrazione 
 
 ## Leggere la cronologia mentre scrivi
 
-Scorri verso l’alto per leggere l’output precedente e continua a scrivere: la vista resta dove sei e in fondo al terminale compare un **prompt flottante** con una copia in tempo reale delle righe in cui stai scrivendo — il prompt della shell o la casella di input di una TUI come Claude Code. I tasti arrivano sempre alla shell, quindi completamento con Tab, cronologia e metodi di input funzionano come al solito. Fai clic sulla freccia all’estremità destra per tornare al prompt; scompare da solo quando il prompt torna visibile. I programmi a schermo intero (vim, less) non hanno cronologia, quindi lì non compare mai.
+Scorri verso l’alto per leggere l’output precedente e continua a scrivere: la vista resta dove sei e in fondo al terminale compare un **prompt flottante** con una copia in tempo reale delle righe in cui stai scrivendo — il prompt della shell o la casella di input di una TUI come Claude Code. I tasti arrivano sempre alla shell, quindi completamento con Tab, cronologia e metodi di input funzionano come al solito. Fai clic sulla freccia all’estremità destra per tornare al prompt; scompare da solo quando il prompt torna visibile. Anche Invio o Ctrl+C riportano in fondo, così vedi cosa fa il comando — o il prompt inviato a una TUI — subito dopo; qualsiasi altro tasto, Maiusc+Invio compreso, lascia la vista dov’è. I programmi a schermo intero (vim, less) non hanno cronologia, quindi lì non compare mai.
 
 ## Ricerca
 

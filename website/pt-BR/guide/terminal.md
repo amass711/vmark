@@ -74,7 +74,7 @@ A navegação entre prompts (`Mod + ↑` / `Mod + ↓`) requer a integração co
 
 ## Ler o histórico enquanto digita
 
-Role para cima para ler a saída anterior e continue digitando: a visualização fica onde você está e um **prompt flutuante** aparece na parte de baixo do terminal com uma cópia ao vivo das linhas em que você digita — o prompt do shell ou a caixa de entrada de uma TUI como o Claude Code. As teclas continuam indo para o shell, então autocompletar com Tab, histórico e métodos de entrada funcionam normalmente. Clique na seta na extremidade direita para voltar ao prompt; ele some sozinho quando o prompt volta a ficar visível. Programas em tela cheia (vim, less) não têm histórico, então ele nunca aparece neles.
+Role para cima para ler a saída anterior e continue digitando: a visualização fica onde você está e um **prompt flutuante** aparece na parte de baixo do terminal com uma cópia ao vivo das linhas em que você digita — o prompt do shell ou a caixa de entrada de uma TUI como o Claude Code. As teclas continuam indo para o shell, então autocompletar com Tab, histórico e métodos de entrada funcionam normalmente. Clique na seta na extremidade direita para voltar ao prompt; ele some sozinho quando o prompt volta a ficar visível. Pressionar Enter ou Ctrl+C também volta para baixo, para você ver o que o comando — ou o prompt enviado a uma TUI — faz em seguida; qualquer outra tecla, inclusive Shift+Enter, deixa a visualização onde está. Programas em tela cheia (vim, less) não têm histórico, então ele nunca aparece neles.
 
 ## Pesquisa
 

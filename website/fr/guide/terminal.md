@@ -74,7 +74,7 @@ La navigation entre les invites (`Mod + ↑` / `Mod + ↓`) nécessite l'intégr
 
 ## Lire l’historique tout en tapant
 
-Faites défiler vers le haut pour relire la sortie précédente et continuez à taper : la vue reste où vous êtes, et une **invite flottante** apparaît en bas du terminal avec une copie en direct des lignes dans lesquelles vous tapez — l’invite du shell, ou la zone de saisie d’une TUI comme Claude Code. Les touches vont toujours au shell : la complétion par Tab, l’historique et les méthodes de saisie fonctionnent comme d’habitude. Cliquez sur la flèche à son extrémité droite pour revenir à l’invite ; elle disparaît d’elle-même dès que l’invite est de nouveau visible. Les programmes plein écran (vim, less) n’ont pas d’historique, elle n’y apparaît donc jamais.
+Faites défiler vers le haut pour relire la sortie précédente et continuez à taper : la vue reste où vous êtes, et une **invite flottante** apparaît en bas du terminal avec une copie en direct des lignes dans lesquelles vous tapez — l’invite du shell, ou la zone de saisie d’une TUI comme Claude Code. Les touches vont toujours au shell : la complétion par Tab, l’historique et les méthodes de saisie fonctionnent comme d’habitude. Cliquez sur la flèche à son extrémité droite pour revenir à l’invite ; elle disparaît d’elle-même dès que l’invite est de nouveau visible. Appuyer sur Entrée ou Ctrl+C y ramène aussi, pour voir ce que fait ensuite la commande — ou l’invite envoyée à une TUI ; toute autre touche, y compris Maj+Entrée, laisse la vue en place. Les programmes plein écran (vim, less) n’ont pas d’historique, elle n’y apparaît donc jamais.
 
 ## Recherche
 

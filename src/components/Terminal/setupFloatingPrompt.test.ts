@@ -98,6 +98,43 @@ describe("setupFloatingPrompt", () => {
     expect(overlay()?.hidden).toBe(true);
   });
 
+  // `input(data, false)` fires onData exactly like a keystroke but without
+  // xterm's own scrollOnUserInput, which production turns off.
+  it.each([
+    ["Enter", "\r"],
+    ["Enter in linefeed mode", "\r\n"],
+    ["Ctrl+C", "\x03"],
+  ])("jumps back to the prompt on %s, so the result is in view", async (_label, data) => {
+    const { term, overlay } = await setup();
+    term.scrollLines(-20);
+    term.input(data, false);
+    expect(term.buffer.active.viewportY).toBe(term.buffer.active.baseY);
+    expect(overlay()?.hidden).toBe(true);
+  });
+
+  it.each([
+    ["a printable key", "a"],
+    ["Shift+Enter (CSI-u newline in a TUI input box)", "\x1b[13;2u"],
+    ["a paste that contains a newline", "ls\r"],
+    ["Backspace", "\x7f"],
+  ])("keeps the viewport where it is on %s", async (_label, data) => {
+    const { term, overlay } = await setup();
+    term.scrollLines(-20);
+    const viewportY = term.buffer.active.viewportY;
+    term.input(data, false);
+    expect(term.buffer.active.viewportY).toBe(viewportY);
+    expect(overlay()?.hidden).toBe(false);
+  });
+
+  it("stops jumping on Enter after cleanup", async () => {
+    const { term, cleanup } = await setup();
+    cleanup();
+    term.scrollLines(-20);
+    const viewportY = term.buffer.active.viewportY;
+    term.input("\r", false);
+    expect(term.buffer.active.viewportY).toBe(viewportY);
+  });
+
   it("stays hidden on the alternate screen", async () => {
     const { term, overlay } = await setup();
     term.scrollLines(-20);
