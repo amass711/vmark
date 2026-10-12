@@ -3470,7 +3470,7 @@ Three processes meet here. The Rust bridge (`src-tauri/src/mcp_bridge/`, driven 
 - gate: requires a debug build (`pnpm tauri:dev`) and a display
 - surfaces: CLI `pnpm e2e:journeys`
 - code: `e2e/run-journeys.mjs`, `e2e/journeys/*.mjs`, `e2e/lib/*.mjs`, `src-tauri/src/automation_port.rs`, `src-tauri/src/app_plugins.rs`
-- rust: `tauri-plugin-mcp-bridge`, debug builds only and not on Windows (0.13.0 does not compile against tauri 2.12's webview2-com; `src-tauri/Cargo.toml`), pinned to `AUTOMATION_BRIDGE_PORT` 9323; if 9323 is busy at startup the bridge is not started (stderr line) rather than sliding to another port
+- rust: `tauri-plugin-mcp-bridge` (0.13.1 or later, the first release on tauri 2.12's webview2-com 0.39, so Windows carries it too; `src-tauri/Cargo.toml`), debug builds only, pinned to `AUTOMATION_BRIDGE_PORT` 9323; if 9323 is busy at startup the bridge is not started (stderr line) rather than sliding to another port
 - docs: `e2e/README.md`
 - tests: harness self-tests under `vitest.gates.config.ts` — `e2e/lib/readiness.test.mjs`, `e2e/lib/staleBinary.test.mjs`, `e2e/lib/rail.test.mjs`, `e2e/lib/workspace.test.mjs`, `e2e/jsonRpcStdio.test.mjs`, `e2e/portFileAgreement.test.mjs`, `e2e/vmarkMcpResult.test.mjs`, `e2e/waitReady.test.mjs`, `e2e/waitReadyArgs.test.mjs`, `e2e/sessionLock.test.mjs`
 - notes: README's journey count (38) now matches. README still lists two known app issues (cross-tab content bleed before the debounce flush; dev-only HMR `Command already registered` crash) — unverified whether either is still reproducible.
